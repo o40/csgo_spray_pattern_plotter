@@ -1,5 +1,9 @@
 # csgo_spray_pattern_plotter
 
+A tool to extract and plot spray patterns from CS:GO replays
+
+![Example](example.png)
+
 # Prerequisites
 
 * Python3

@@ -111,7 +111,7 @@ def plot_spray(spray,
     weapon_str = weapon_id_to_string(spray.weapon)
     replay_name = Path(csv_file).stem
     axes.set_title(f"Game: {replay_name}.dem\n"
-                   "Tick: {spray.first_shot_tick}, Player: {spray.player}, Weapon: {weapon_str}")
+                   f"Tick: {spray.first_shot_tick}, Player: {spray.player}, Weapon: {weapon_str}")
     axes.set_xlabel("yaw (degrees)")
     axes.set_ylabel("pitch (degrees)")
 
