@@ -40,8 +40,8 @@ def should_adjust_horizontal_angle(points):
     return horizontal_min < 20 and horizontal_max > 360 - 20
 
 
-def adjust_horizontal_angles(points):
-    return [((point + 180) % 360) for point in points]
+def adjust_horizontal_angles(angles):
+    return [((angle + 180) % 360) for angle in angles]
 
 
 def adjust_vertical_angle(angle):
@@ -101,6 +101,7 @@ def plot_spray(spray,
         spray.view_angles.x = adjust_horizontal_angles(spray.view_angles.x)
         spray.shots.x = adjust_horizontal_angles(spray.shots.x)
         spray.hits.x = adjust_horizontal_angles(spray.hits.x)
+        spray.kills.x = adjust_horizontal_angles(spray.kills.x)
 
     # Plot the view angles as a line
     plot_line(axes, spray.view_angles)
@@ -129,6 +130,7 @@ def parse_args():
     parser.add_argument("--csv", required=True)
     parser.add_argument("--filter", required=False)
     parser.add_argument("--test", required=False, action='store_true')
+    parser.add_argument("--tick", required=False)
     parser.add_argument("--out", required=False, default='out')
     return parser.parse_args()
 
@@ -200,6 +202,8 @@ def main():
         sprays.append(spray)
 
         for spray in sprays:
+            if args.tick and (int(args.tick) != spray.first_shot_tick):
+                continue
             if len(spray.shots.x) >= min_shots_for_plot:
                 plot_spray(spray, args.csv, args.out)
                 if args.test:
