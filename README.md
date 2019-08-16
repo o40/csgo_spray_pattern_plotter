@@ -16,6 +16,7 @@ A tool to extract and plot spray patterns from CS:GO replays
 Extract data from a replay file and store it as comma separated values
 
 ```
+go get -u github.com/markus-wa/demoinfocs-golang
 go run spraypatternextractor.go -demo=natus-vincere-vs-big-m1-dust2.dem > natus-vincere-vs-big-m1-dust2.csv
 ```
 
